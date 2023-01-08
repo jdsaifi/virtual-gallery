@@ -43,6 +43,7 @@ else {
 
 			gal.scene.fog = new THREE.FogExp2(0x666666, 0.025);
 
+			// gal.renderer.setSize(window.innerWidth, window.innerHeight);
 			gal.renderer.setSize(window.innerWidth, window.innerHeight);
 			gal.renderer.setClearColor(0xffffff, 1);
 			document.body.appendChild(gal.renderer.domElement);
@@ -53,7 +54,7 @@ else {
 
             //invisible since this will solely be used to determine the size
             //of the bounding box of our boxcollider for the user
-            gal.user.visible = false;
+            gal.user.visible = true;
             
             //making Bounding Box and HelperBox
             //boundingbox is used for collisions, Helper box just makes it easier to debug 
@@ -249,6 +250,7 @@ else {
 
 			//let there be light!
 			gal.worldLight = new THREE.AmbientLight(0x46586d);
+			// gal.worldLight = new THREE.AmbientLight(0xffffff);
 			gal.scene.add(gal.worldLight);
 
             //set the floor up
@@ -259,7 +261,7 @@ else {
 
             //Phong is for shiny surfaces
 			gal.floorMaterial = new THREE.MeshPhongMaterial( {map: gal.floorText } );
-			gal.floor = new THREE.Mesh(new THREE.PlaneGeometry(45,45), gal.floorMaterial);
+			gal.floor = new THREE.Mesh(new THREE.PlaneGeometry(12,12), gal.floorMaterial);
 
 			gal.floor.rotation.x = Math.PI/2;
             gal.floor.rotation.y = Math.PI;
@@ -269,10 +271,10 @@ else {
 			gal.wallGroup = new THREE.Group();
 			gal.scene.add(gal.wallGroup);
 
-			gal.wall1 = new THREE.Mesh(new THREE.BoxGeometry(40,6, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
-			gal.wall2 = new THREE.Mesh(new THREE.BoxGeometry(6,6, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
-			gal.wall3 = new THREE.Mesh(new THREE.BoxGeometry(6,6, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
-			gal.wall4 = new THREE.Mesh(new THREE.BoxGeometry(40,6, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
+			gal.wall1 = new THREE.Mesh(new THREE.BoxGeometry(12, 12, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
+			gal.wall2 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
+			gal.wall3 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
+			gal.wall4 = new THREE.Mesh(new THREE.BoxGeometry(12, 12, 0.001), new THREE.MeshLambertMaterial({color: 0xffffff}));
 
 			gal.wallGroup.add(gal.wall1, gal.wall2, gal.wall3, gal.wall4);
 			gal.wallGroup.position.y = 3;
@@ -293,7 +295,7 @@ else {
 			//Ceiling//
 			//gal.ceilMaterial = new THREE.MeshLambertMaterial({color: 0x8DB8A7});
 			gal.ceilMaterial = new THREE.MeshLambertMaterial({color: 0xeeeeee});
-			gal.ceil = new THREE.Mesh(new THREE.PlaneGeometry(40,6), gal.ceilMaterial);
+			gal.ceil = new THREE.Mesh(new THREE.PlaneGeometry(12,6), gal.ceilMaterial);
 			gal.ceil.position.y = 6;
 			gal.ceil.rotation.x = Math.PI/2;
 
